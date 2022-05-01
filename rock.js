@@ -16,9 +16,28 @@ function playRound(playerChoice, computerChoice) {
         : (playerChoice == "PAPIER" && computerChoice == "SCHERE") ? "Du verlierst!"
         : "Gleichstand!"
     console.log(result);
+    return result;
 }
 
-let playerChoiceUn = prompt("Schere, Stein oder Papier?");
-let playerChoice = playerChoiceUn.toUpperCase();
+function game() {
+    let userScore = 0;
+    let compScore = 0;
+    for (let i = 0; i<5; i++) {
+        let playerChoiceUn = prompt("Schere, Stein oder Papier?");
+        let playerChoice = playerChoiceUn.toUpperCase();
+        let round = playRound(playerChoice, computerPlay());
+        if (round == "Du gewinnst!") {
+            userScore++;
+        } else if (round =="Du verlierst!") {
+            compScore++;
+        } else {
+            continue;
+        }
+    }
+    alert("Endstand:" + userScore +":" +compScore);
+        
 
-playRound(playerChoice, computerPlay());
+
+}
+
+game();
